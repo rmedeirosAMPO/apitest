@@ -3,7 +3,7 @@ swagger: 2.0
 info:
   title: ERPInfoApi
   description: Exposes SAP and Movex partnumber information.
-  version: 0.0.2
+  version: 0.0.4
 paths:
   /partnumber:
     get:
