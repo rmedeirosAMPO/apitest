@@ -1,0 +1,66 @@
+---
+swagger: 2.0
+info:
+  title: ERPInfoApi
+  description: Exposes SAP and Movex partnumber information.
+  version: 0.0.2
+paths:
+  /partnumber:
+    get:
+      summary: Retrieves multiple partnumbers ERP information
+      description: Retrieves multiple partnumbers ERP information
+      operationId: getPartnumbersERPInformation
+      parameters:
+      - name: partnumbers
+        in: query
+        required: true
+        type: array
+        items:
+          type: string
+      responses:
+        200:
+          description: ERP Information of multiple partnumbers gotten.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductInfo'
+  /erpinfo-api/1.0: {}
+  /erpinfo-api/1.0/partnumber: {}
+definitions:
+  Status:
+    enum:
+    - UPDATING
+    - UPDATED
+    - ERROR
+    type: string
+  ProductInfo:
+    required:
+    - userId
+    - partnumber
+    - listPrice
+    - netPrice
+    - deliveryDate
+    - quantity
+    - status
+    properties:
+      userId:
+        description: User's id
+        type: string
+      partnumber:
+        type: string
+      listPrice:
+        format: double
+        type: number
+      netPrice:
+        format: double
+        type: number
+      deliveryDate:
+        format: date
+        type: string
+      quantity:
+        type: integer
+      status:
+        $ref: '#/definitions/Status'
+securityDefinitions:
+  KeycloakAuth:
+    type: basic
