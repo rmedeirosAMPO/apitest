@@ -5,9 +5,9 @@ info:
   description: Exposes SAP and Movex partnumber information.
   version: 0.0.4
 paths:
-  /partnumber:
+  /partnumbers:
     get:
-      summary: Retrieves multiple partnumbers ERP information
+      summary: 'Retrieves multiple partnumbers ERP information  '
       description: Retrieves multiple partnumbers ERP information
       operationId: getPartnumbersERPInformation
       parameters:
@@ -24,8 +24,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/ProductInfo'
-  /erpinfo-api/1.0: {}
-  /erpinfo-api/1.0/partnumber: {}
 definitions:
   Status:
     enum:
